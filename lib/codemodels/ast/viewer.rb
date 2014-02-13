@@ -7,6 +7,7 @@ import javax.swing.JFrame
 import java.lang.Runnable
 import java.awt.Dimension
 import javax.swing.JSplitPane
+import javax.swing.JTextArea
 
 module Codemodels
   module Ast
@@ -15,12 +16,15 @@ module Codemodels
         class EditorFrame < JFrame
 
             def start
-                self.title = "CodeModels AST-Viewe"
+                self.title = "CodeModels AST-Viewer"
                 self.size = Dimension.new 1000,700
                 self.visible = true
 
                 sp = JSplitPane.new JSplitPane::HORIZONTAL_SPLIT
                 self.content_pane.add sp
+
+                ta = JTextArea.new
+                sp.add ta
             end
 
         end
@@ -30,6 +34,8 @@ module Codemodels
           java_signature 'void run()'
           def run
             p "running now."
+            ef = EditorFrame.new
+            ef.start
             p "done running."
           end
         end
